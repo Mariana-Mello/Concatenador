@@ -338,6 +338,67 @@ button:hover:not([disabled]) {
 }
 /* === Container do título + tooltip = GUIA = FIM === */
 
+/* === Ajustes para dispositivos móveis === */
+@media (max-width: 768px) {
+
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  /* Reduz a logo e título */
+  .titulo-container h1 img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .titulo-container h1 {
+    font-size: 20px;
+    flex-wrap: wrap;
+  }
+
+  /* Deixa os switches empilhados */
+  #configTexto {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .switch-container {
+    width: 45%;
+    justify-content: flex-start;
+  }
+
+  /* Ajusta textarea e selects */
+  textarea, input[type="text"], select {
+    font-size: 14px;
+  }
+
+  /* Botões empilhados e centralizados */
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* Espaçamento geral */
+  section {
+    margin-bottom: 20px;
+  }
+
+  /* Ajusta tooltips no mobile (não cabe flutuante) */
+  .switch-container::after,
+  .switch-container::before,
+  .tooltip-text {
+    display: none;
+  }
+}
+
+
 
 
 
