@@ -445,6 +445,8 @@ function inicializarSwitchesTexto() {
     'switchCapitalize',
     'switchNoSpace',
     'switchTrimExtra',
+    'switchCamel',
+    'switchPascal',
     'switchSnake',
     'switchKebab'
   ].map(id => document.getElementById(id)).filter(Boolean);
@@ -515,5 +517,6 @@ function aplicarFormatacaoTexto(valor) {
 
 
   
+
 
 
