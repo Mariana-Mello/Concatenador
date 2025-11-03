@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://concatenador-beta.vercel.app/sitemap.xml
