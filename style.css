@@ -338,65 +338,97 @@ button:hover:not([disabled]) {
 }
 /* === Container do título + tooltip = GUIA = FIM === */
 
-/* === Ajustes para dispositivos móveis === */
+/* === Ajustes completos para dispositivos móveis === */
 @media (max-width: 768px) {
 
   body {
-    padding: 10px;
+    padding: 8px;
+    margin: 0;
+    overflow-x: hidden;
   }
 
   .container {
     width: 100%;
-    padding: 15px;
+    max-width: 100%;
+    padding: 10px;
     border-radius: 10px;
+    box-sizing: border-box;
   }
 
-  /* Reduz a logo e título */
-  .titulo-container h1 img {
-    width: 50px;
-    height: 50px;
+  /* Ajuste título e logo */
+  .titulo-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
   }
 
   .titulo-container h1 {
-    font-size: 20px;
-    flex-wrap: wrap;
+    font-size: 22px;
+    margin: 0;
   }
 
-  /* Deixa os switches empilhados */
+  .titulo-container img {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Switches: 2 colunas */
   #configTexto {
+    display: flex;
     flex-wrap: wrap;
-    gap: 8px;
     justify-content: center;
+    gap: 10px;
   }
 
   .switch-container {
-    width: 45%;
+    width: 48%;
     justify-content: flex-start;
   }
 
-  /* Ajusta textarea e selects */
+  /* Inputs e textareas ocupam toda a tela */
   textarea, input[type="text"], select {
+    width: 100%;
     font-size: 14px;
+    box-sizing: border-box;
   }
 
-  /* Botões empilhados e centralizados */
+  /* Botões grandes e empilhados */
   button {
     width: 100%;
-    margin-top: 10px;
+    font-size: 15px;
+    padding: 10px;
+    margin-top: 8px;
   }
 
-  /* Espaçamento geral */
+  /* Corrige seções */
   section {
     margin-bottom: 20px;
   }
 
-  /* Ajusta tooltips no mobile (não cabe flutuante) */
-  .switch-container::after,
-  .switch-container::before,
-  .tooltip-text {
-    display: none;
+  /* Pré-visualização */
+  #previewContainer {
+    width: 100%;
+    overflow-x: auto;
+    font-size: 13px;
+    word-break: break-word;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  /* Oculta tooltips (não funcionam bem no toque) */
+  [data-tooltip]:after,
+  [data-tooltip]:before {
+    display: none !important;
+  }
+
+  /* Corrige linhas internas */
+  .switch-text {
+    font-size: 13px;
   }
 }
+
+
 
 
 
