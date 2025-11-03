@@ -487,6 +487,16 @@ function aplicarFormatacaoTexto(valor) {
       return valor.replace(/\s+/g, '');
     case 'trimextra': 
       return valor.replace(/\s+/g, ' ').trim();
+      case 'camel':
+  return valor
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase())
+    .replace(/^[A-Z]/, chr => chr.toLowerCase());
+      case 'pascal':
+  return valor
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase())
+    .replace(/^[a-z]/, chr => chr.toUpperCase());
     case 'snake': 
       return valor.trim().toLowerCase().replace(/\s+/g, '_').replace(/[^\w_]/g, '');
     case 'kebab': 
@@ -505,4 +515,5 @@ function aplicarFormatacaoTexto(valor) {
 
 
   
+
 
