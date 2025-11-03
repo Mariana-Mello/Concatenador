@@ -6,6 +6,12 @@
   <title>CONCATENADOR</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="LOGO.png">
+  <script>
+    // Carrega o arquivo meta.html e injeta no <head>
+    fetch("meta.html")
+      .then(res => res.text())
+      .then(html => document.head.insertAdjacentHTML("beforeend", html));
+  </script>
 </head>
 <body>
   <header class="titulo-container">
@@ -157,4 +163,5 @@
   <script src="script.js"></script>
 
 </body>
+
 </html>
