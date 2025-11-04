@@ -512,6 +512,19 @@ button:hover:not([disabled]) {
   }
 }
 
+/* === Ajuste para mobile - BOTÃO DESATIVADO - MENSAGEM === */
+@media (max-width: 600px) {
+  button[disabled]::after {
+    bottom: auto;
+    top: 110%; /* mostra abaixo do botão para evitar corte no topo */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    white-space: normal; /* quebra linha se necessário */
+    width: 80vw; /* limita a largura do tooltip */
+    text-align: center;
+  }
+}
 
 
 
