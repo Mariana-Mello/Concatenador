@@ -171,15 +171,13 @@ button:hover:not([disabled]) {
   gap: 8px;
   flex-wrap: wrap; /* permite quebra de linha */
 }
+
 /* === Responsividade: 3 por linha no mobile === */
 @media (max-width: 600px) {
   .switch-container {
-    justify-content: flex-start;
-  }
-
-  .switch-container > * {
-    flex: 1 1 calc(33.33% - 8px); /* 3 por linha, respeitando o gap */
-    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 10px 8px; /* espaçamento entre linhas e colunas */
   }
 }
 /* === Texto do switch === */
@@ -364,6 +362,7 @@ button:hover:not([disabled]) {
   transform: translateY(-10%) translateX(5px);
 }
 /* === Container do título + tooltip = GUIA = FIM === */
+
 
 
 
