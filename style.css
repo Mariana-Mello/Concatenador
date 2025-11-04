@@ -512,17 +512,65 @@ button:hover:not([disabled]) {
   }
 }
 
-/* === Ajuste para mobile - BOTÃO DESATIVADO - MENSAGEM === */
+/* === Tooltip do botão (mobile): centralizado abaixo e responsivo) === */
 @media (max-width: 600px) {
+  /* garante que o botão seja referência para o pseudo-elemento */
+  button[disabled] {
+    position: relative; /* já deve estar, mas reforça */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* estilo base do balão no mobile (invisível por padrão) */
   button[disabled]::after {
-    bottom: auto;
-    top: 110%; /* mostra abaixo do botão para evitar corte no topo */
+    content: "⚠️ Gere o preview antes de filtrar.";
+    position: absolute;
     left: 50%;
+    top: 110%; /* logo abaixo do botão */
     transform: translateX(-50%);
-    font-size: 0.8rem;
-    white-space: normal; /* quebra linha se necessário */
-    width: 80vw; /* limita a largura do tooltip */
+    background-color: #333;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    white-space: normal;                 /* permite quebra de linha */
     text-align: center;
+    width: auto;
+    max-width: calc(100vw - 32px);       /* nunca ultrapassa a viewport */
+    box-sizing: border-box;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    pointer-events: none;
+  }
+
+  /* seta do balão */
+  button[disabled]::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: calc(110% - 8px);
+    transform: translateX(-50%) rotate(180deg);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.18s ease;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* mostra o balão quando o usuário interage (hover, active ou focus) */
+  button[disabled]:hover::after,
+  button[disabled]:active::after,
+  button[disabled]:focus::after,
+  button[disabled]:hover::before,
+  button[disabled]:active::before,
+  button[disabled]:focus::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(6px);
   }
 }
 
