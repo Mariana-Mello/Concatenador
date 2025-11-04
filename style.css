@@ -1,7 +1,7 @@
 /* Reset básico */
 * {
   box-sizing: border-box;
-  margin: 10;
+  margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -45,7 +45,7 @@ textarea {
   border-radius: 6px;
   font-size: 0.95rem;
   background-color: #fafafa;
-  resize: vertical; /* permite redimensionar só na vertical */
+  resize: vertical;
   font-family: inherit;
 }
 
@@ -56,8 +56,8 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-top: 10px;
-  white-space: pre-wrap; /* mantém quebras e espaços */
-  word-wrap: break-word; /* evita texto estourar a borda */
+  white-space: pre-wrap;
+  word-wrap: break-word;
   font-size: 0.95rem;
   font-family: inherit;
   color: #333;
@@ -81,14 +81,12 @@ button:hover {
   background-color: #005ea1;
 }
 
-/* Estado desabilitado */
 button[disabled] {
   background-color: #f5f7f8;
   color: #999;
   cursor: not-allowed;
 }
 
-/* Tooltip para botão desabilitado */
 button[disabled]::after {
   content: "⚠️ Gere o preview antes de filtrar.";
   position: absolute;
@@ -106,12 +104,10 @@ button[disabled]::after {
   transition: opacity 0.2s;
 }
 
-/* Mostra o tooltip ao passar o mouse */
 button[disabled]:hover::after {
   opacity: 1;
 }
 
-/* Hover quando habilitado */
 button:hover:not([disabled]) {
   background-color: #00a100;
 }
@@ -131,11 +127,11 @@ button:hover:not([disabled]) {
   position: relative;
 }
 
-/* botão de copiar — AGORA fica à esquerda */
+/* botão de copiar */
 .copy-btn {
   position: absolute;
   bottom: 6px;
-  right: 70px; /* antes era 8px, agora recuamos para abrir espaço ao contador */
+  right: 70px;
   background: #007bff;
   color: #fff;
   border: none;
@@ -150,11 +146,11 @@ button:hover:not([disabled]) {
   background: #0056b3;
 }
 
-/* contador de linhas — AGORA fica mais à direita */
+/* contador de linhas */
 .line-count {
   position: absolute;
   bottom: 6px;
-  right: 6px; /* encostado à borda direita */
+  right: 6px;
   font-size: 12px;
   color: #333;
   background: rgba(255,255,255,0.85);
@@ -163,8 +159,8 @@ button:hover:not([disabled]) {
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   pointer-events: none;
 }
+
 /* === Layout dos switches === */
-/* === Layout padrão === */
 .switch-container {
   position: relative;
   display: flex;
@@ -172,7 +168,6 @@ button:hover:not([disabled]) {
   gap: 8px;
 }
 
-/* Contêiner principal que envolve TODOS os switches */
 .switches-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -181,17 +176,50 @@ button:hover:not([disabled]) {
 
 /* === Responsividade: 2 switches por linha no mobile === */
 @media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 15px;
+    max-width: 95%;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  textarea {
+    font-size: 0.9rem;
+  }
+
+  button {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .copy-btn,
+  .line-count {
+    position: static;
+    display: inline-block;
+    margin-top: 10px;
+  }
+
   .switches-wrapper {
     justify-content: center;
   }
 
   .switch-container {
-    flex: 1 1 calc(50% - 12px); /* 2 por linha */
+    flex: 1 1 calc(50% - 12px);
     justify-content: center;
     box-sizing: border-box;
   }
 
-  /* Mantém o texto e botão na mesma linha */
   .switch-container .switch-label {
     margin-right: 6px;
   }
@@ -200,6 +228,21 @@ button:hover:not([disabled]) {
     display: inline-block;
     vertical-align: middle;
     font-size: 14px;
+  }
+
+  /* Tooltip menor */
+  .tooltip-text {
+    width: 90%;
+    left: 5%;
+    top: 110%;
+    transform: none;
+    font-size: 12px;
+  }
+
+  .titulo-container {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
   }
 }
 
@@ -230,7 +273,6 @@ button:hover:not([disabled]) {
   transition: 0.3s;
 }
 
-/* === Bolinha === */
 .switch-label::after {
   content: '';
   position: absolute;
@@ -243,7 +285,6 @@ button:hover:not([disabled]) {
   transition: 0.3s;
 }
 
-/* === Ativo === */
 .switch-input:checked + .switch-label {
   background: #4caf50;
 }
@@ -254,17 +295,15 @@ button:hover:not([disabled]) {
   background: #fff;
 }
 
-/* === Efeito de clique === */
 .switch-label:active::after {
   width: 22px;
 }
 
-/* === Hover leve === */
 .switch-label:hover {
   background: #555;
 }
 
-/* === Tooltip = FORMATAÇÃO INICIO=== */
+/* === Tooltip === */
 .switch-container::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -283,7 +322,6 @@ button:hover:not([disabled]) {
   box-shadow: 0 0 6px rgba(0,0,0,0.4);
 }
 
-/* Triângulo do tooltip */
 .switch-container::before {
   content: "";
   position: absolute;
@@ -297,14 +335,12 @@ button:hover:not([disabled]) {
   transition: opacity 0.25s ease;
 }
 
-/* Mostra tooltip no hover */
 .switch-container:hover::after,
 .switch-container:hover::before {
   opacity: 1;
 }
-/* === Tooltip = FORMATAÇÃO FIM === */
 
-/* === Container do título + tooltip = GUIA === */
+/* === Container do título + tooltip === */
 .titulo-container {
   display: flex;
   align-items: center;
@@ -321,7 +357,7 @@ button:hover:not([disabled]) {
   color: #222;
 }
 
-/* === Tooltip lateral (balão à direita) === */
+/* === Tooltip lateral === */
 .tooltip-container {
   position: relative;
   display: inline-block;
@@ -345,7 +381,6 @@ button:hover:not([disabled]) {
   transform: scale(1.1);
 }
 
-/* === Tooltip à direita === */
 .tooltip-text {
   visibility: hidden;
   width: 320px;
@@ -367,7 +402,6 @@ button:hover:not([disabled]) {
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
-/* seta lateral esquerda */
 .tooltip-text::after {
   content: '';
   position: absolute;
@@ -384,13 +418,3 @@ button:hover:not([disabled]) {
   opacity: 1;
   transform: translateY(-10%) translateX(5px);
 }
-/* === Container do título + tooltip = GUIA = FIM === */
-
-
-
-
-
-
-
-
-
