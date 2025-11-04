@@ -164,6 +164,7 @@ button:hover:not([disabled]) {
   pointer-events: none;
 }
 /* === Layout dos switches === */
+/* === Layout padrão === */
 .switch-container {
   position: relative;
   display: flex;
@@ -175,45 +176,33 @@ button:hover:not([disabled]) {
 .switches-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
-/* === Responsividade: 3 switches por linha no mobile === */
+/* === Responsividade: 2 switches por linha no mobile === */
 @media (max-width: 600px) {
   .switches-wrapper {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
   }
 
   .switch-container {
-    flex: 1 1 calc(33.33% - 10px);
+    flex: 1 1 calc(50% - 12px); /* 2 por linha */
     justify-content: center;
     box-sizing: border-box;
   }
-}
-  /* Agrupa cada trio (span +input + label) e força quebra */
+
+  /* Mantém o texto e botão na mesma linha */
+  .switch-container .switch-label {
+    margin-right: 6px;
+  }
+
   .switch-container .switch-text {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    width: calc(33.33% - 8px);
-    box-sizing: border-box;
-  }
-
-  /* Faz o label e o input ficarem juntos visualmente */
-  .switch-container .switch-input,
-  .switch-container .switch-label {
     display: inline-block;
-  }
-
-  /* Corrige a ordem visual — deixa o texto e botão na mesma linha */
-  .switch-container .switch-text,
-  .switch-container .switch-label {
     vertical-align: middle;
+    font-size: 14px;
   }
 }
+
 /* === Texto do switch === */
 .switch-text {
   color: #201f1f;
@@ -396,6 +385,7 @@ button:hover:not([disabled]) {
   transform: translateY(-10%) translateX(5px);
 }
 /* === Container do título + tooltip = GUIA = FIM === */
+
 
 
 
