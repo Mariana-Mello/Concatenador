@@ -164,20 +164,42 @@ button:hover:not([disabled]) {
   pointer-events: none;
 }
 /* === Layout dos switches === */
+/* === Layout padrão === */
 .switch-container {
   position: relative;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
-  flex-wrap: wrap; /* permite quebra de linha */
 }
 
-/* === Responsividade: 3 por linha no mobile === */
+/* === Responsividade: 3 switches por linha no mobile === */
 @media (max-width: 600px) {
   .switch-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-    gap: 10px 8px; /* espaçamento entre linhas e colunas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  /* Agrupa cada trio (span + input + label) e força quebra */
+  .switch-container .switch-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: calc(33.33% - 8px);
+    box-sizing: border-box;
+  }
+
+  /* Faz o label e o input ficarem juntos visualmente */
+  .switch-container .switch-input,
+  .switch-container .switch-label {
+    display: inline-block;
+  }
+
+  /* Corrige a ordem visual — deixa o texto e botão na mesma linha */
+  .switch-container .switch-text,
+  .switch-container .switch-label {
+    vertical-align: middle;
   }
 }
 /* === Texto do switch === */
@@ -362,6 +384,7 @@ button:hover:not([disabled]) {
   transform: translateY(-10%) translateX(5px);
 }
 /* === Container do título + tooltip = GUIA = FIM === */
+
 
 
 
