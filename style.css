@@ -418,3 +418,24 @@ button:hover:not([disabled]) {
   opacity: 1;
   transform: translateY(-10%) translateX(5px);
 }
+/* === Ajuste do tooltip no MOBILE === */
+@media (max-width: 600px) {
+  .tooltip-text {
+    width: 90vw; /* ocupa boa parte da tela */
+    left: 50%;
+    top: 110%;
+    transform: translateX(-50%) translateY(0);
+    border-radius: 10px;
+  }
+
+  /* seta agora aponta para cima */
+  .tooltip-text::after {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #1f1f1f transparent transparent transparent;
+  }
+}
+
