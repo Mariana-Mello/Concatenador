@@ -494,7 +494,7 @@ button:hover:not([disabled]) {
     border-radius: 12px;
   }
 }
-/* === Tooltip centralizado e seguro no MOBILE === */
+/* === Tooltip centralizado e seguro no MOBILE - Balão informativo dos botões === */
 @media (max-width: 600px) {
   .switch-container::after {
     left: 50%;                        /* centraliza horizontalmente */
@@ -511,6 +511,7 @@ button:hover:not([disabled]) {
     transform: translateX(-50%);
   }
 }
+
 
 
 
