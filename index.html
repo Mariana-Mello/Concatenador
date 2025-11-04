@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CONCATENADOR</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="LOGO.png">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="LOGO.png" />
 </head>
 <body>
+
+  <!-- Cabeçalho -->
   <header class="titulo-container">
     <h1>
-      <img src="LOGO.png" width="80" height="80" alt="Logo">
+      <img src="LOGO.png" width="80" height="80" alt="Logo" />
       <strong>CONCATENADOR</strong>
     </h1>
 
@@ -18,170 +20,171 @@
     <div class="tooltip-container">
       <span class="info-icon">🧭</span>
       <div class="tooltip-text">
-        <strong>🧭 Guia rápido:</strong><br><br>
-        • Carregue o arquivo e defina o modelo desejado para gerar as linhas.<br><br>
-        • Campos tipo <b>CPF</b> e <b>DATA</b> são validados e formatados automaticamente.<br><br>
-        • Campos tipo <b>TEXTO</b> que possuem espaços no início e no fim são removidos por padrão.<br><br>
-        • Você pode aplicar formatações extras com os botões disponíveis.<br><br>
+        <strong>🧭 Guia rápido:</strong><br /><br />
+        • Carregue o arquivo e defina o modelo desejado para gerar as linhas.<br /><br />
+        • Campos tipo <b>CPF</b> e <b>DATA</b> são validados e formatados automaticamente.<br /><br />
+        • Campos tipo <b>TEXTO</b> que possuem espaços no início e no fim são removidos por padrão.<br /><br />
+        • Você pode aplicar formatações extras com os botões disponíveis.<br /><br />
         • Visualize e exporte o resultado formatado com segurança e consistência.
       </div>
     </div>
   </header>
 
+  <!-- 1. Carregar arquivo -->
   <section>
     <h3><strong>1. Carregar arquivo:</strong></h3>
-    <br>
-    <input type="file" id="fileInput" accept=".csv,.xlsx,.ods">
+    <br />
+    <input type="file" id="fileInput" accept=".csv,.xlsx,.ods" />
     <p><small>Formato recomendado: .csv ou .xlsx</small></p>
   </section>
-  <br>
-  <hr>
-  <br>
+
+  <br /><hr /><br />
+
+  <!-- 2. Definir modelo de formatação -->
   <section>
     <h3><strong>2. Definir modelo de formatação:</strong></h3>
-    <br>
-    <p>Use os placeholders <code>{A}</code>, <code>{B}</code>, etc., para representar as colunas da planilha + o tipo (CPF),(DATA) e (TEXTO).</p>
-    <br>
-    <textarea id="template" rows="3" cols="80">Exemplo: (UUID(), '{A(CPF)}', '{B(DATA)}', '{C(TEXTO)}'),
-Exemplo JSON: {"cpf": "{A(CPF)}", "data": "{B(DATA)}"},</textarea>
+    <br />
+    <p>
+      Use os placeholders <code>{A}</code>, <code>{B}</code>, etc., para representar as colunas da planilha + o tipo (CPF), (DATA) e (TEXTO).
+    </p>
+    <br />
+    <textarea id="template" rows="3" cols="80">
+Exemplo: (UUID(), '{A(CPF)}', '{B(DATA)}', '{C(TEXTO)}'),
+Exemplo JSON: {"cpf": "{A(CPF)}", "data": "{B(DATA)}"},
+    </textarea>
 
     <div id="colunas" style="display:none;">
-    <p><strong>Colunas detectadas:</strong></p>
-    <div id="colunasList"></div>
-    <p><small>Representação das colunas que possuem dados detectadas automaticamente no arquivo carregado, certifique-se de preencher o modelo de acordo com as colunas disponíveis.</small></p>
+      <p><strong>Colunas detectadas:</strong></p>
+      <div id="colunasList"></div>
+      <p>
+        <small>Representação das colunas que possuem dados detectadas automaticamente no arquivo carregado. Certifique-se de preencher o modelo de acordo com as colunas disponíveis.</small>
+      </p>
     </div>
 
-<!-- === Opções de formatação de texto === -->
-<div id="configTexto" style="margin-top:10px; display:flex; align-items:center; gap:15px;">
-<div class="switches-wrapper">
-  <!-- lower -->
-  <div class="switch-container" data-tooltip="Converter texto para minúsculas">
-    <input type="checkbox" id="switchLower" class="switch-input">
-    <label for="switchLower" class="switch-label"></label>
-    <span class="switch-text">🔡 lower</span>
-  </div>
+    <!-- === Opções de formatação de texto === -->
+    <div id="configTexto" style="margin-top:10px; display:flex; align-items:center; gap:15px;">
+      <div class="switches-wrapper">
+        
+        <!-- lower -->
+        <div class="switch-container" data-tooltip="Converter texto para minúsculas">
+          <input type="checkbox" id="switchLower" class="switch-input" />
+          <label for="switchLower" class="switch-label"></label>
+          <span class="switch-text">🔡 lower</span>
+        </div>
 
-  <!-- UPPER -->
-  <div class="switch-container" data-tooltip="Converter texto para MAIÚSCULAS">
-    <input type="checkbox" id="switchUpper" class="switch-input">
-    <label for="switchUpper" class="switch-label"></label>
-    <span class="switch-text">🔠 UPPER</span>
-  </div>
+        <!-- UPPER -->
+        <div class="switch-container" data-tooltip="Converter texto para MAIÚSCULAS">
+          <input type="checkbox" id="switchUpper" class="switch-input" />
+          <label for="switchUpper" class="switch-label"></label>
+          <span class="switch-text">🔠 UPPER</span>
+        </div>
 
-  <!-- Capitalize -->
-  <div class="switch-container" data-tooltip="Primeira letra de cada palavra Maiúscula">
-    <input type="checkbox" id="switchCapitalize" class="switch-input">
-    <label for="switchCapitalize" class="switch-label"></label>
-    <span class="switch-text">🔤 Capitalize</span>
-  </div>
+        <!-- Capitalize -->
+        <div class="switch-container" data-tooltip="Primeira letra de cada palavra Maiúscula">
+          <input type="checkbox" id="switchCapitalize" class="switch-input" />
+          <label for="switchCapitalize" class="switch-label"></label>
+          <span class="switch-text">🔤 Capitalize</span>
+        </div>
 
-    <!-- nospace -->
-  <div class="switch-container" data-tooltip="Remove todos os espaços do texto">
-    <input type="checkbox" id="switchNoSpace" class="switch-input">
-    <label for="switchNoSpace" class="switch-label"></label>
-    <span class="switch-text">✂️ NoSpaces</span>
-  </div>
+        <!-- NoSpaces -->
+        <div class="switch-container" data-tooltip="Remove todos os espaços do texto">
+          <input type="checkbox" id="switchNoSpace" class="switch-input" />
+          <label for="switchNoSpace" class="switch-label"></label>
+          <span class="switch-text">✂️ NoSpaces</span>
+        </div>
 
-  <!-- trimExtra -->
-  <div class="switch-container" data-tooltip="Mantém apenas um espaço entre palavras">
-    <input type="checkbox" id="switchTrimExtra" class="switch-input">
-    <label for="switchTrimExtra" class="switch-label"></label>
-    <span class="switch-text">🧹 Trim Extra</span>
-  </div>
+        <!-- Trim Extra -->
+        <div class="switch-container" data-tooltip="Mantém apenas um espaço entre palavras">
+          <input type="checkbox" id="switchTrimExtra" class="switch-input" />
+          <label for="switchTrimExtra" class="switch-label"></label>
+          <span class="switch-text">🧹 Trim Extra</span>
+        </div>
 
-  <!-- camelCase -->
-<div class="switch-container" data-tooltip="Transforma em camelCase">
-  <input type="checkbox" id="switchCamel" class="switch-input">
-  <label for="switchCamel" class="switch-label"></label>
-  <span class="switch-text">🐪 camelCase</span>
-</div>
+        <!-- camelCase -->
+        <div class="switch-container" data-tooltip="Transforma em camelCase">
+          <input type="checkbox" id="switchCamel" class="switch-input" />
+          <label for="switchCamel" class="switch-label"></label>
+          <span class="switch-text">🐪 camelCase</span>
+        </div>
 
-<!-- PascalCase -->
-<div class="switch-container" data-tooltip="Transforma em PascalCase">
-  <input type="checkbox" id="switchPascal" class="switch-input">
-  <label for="switchPascal" class="switch-label"></label>
-  <span class="switch-text">🅿️ PascalCase</span>
-</div>
+        <!-- PascalCase -->
+        <div class="switch-container" data-tooltip="Transforma em PascalCase">
+          <input type="checkbox" id="switchPascal" class="switch-input" />
+          <label for="switchPascal" class="switch-label"></label>
+          <span class="switch-text">🅿️ PascalCase</span>
+        </div>
 
-  <!-- snake_case -->
-  <div class="switch-container" data-tooltip="Transforma em snake_case">
-    <input type="checkbox" id="switchSnake" class="switch-input">
-    <label for="switchSnake" class="switch-label"></label>
-    <span class="switch-text">🐍 snake_case</span>
-  </div>
+        <!-- snake_case -->
+        <div class="switch-container" data-tooltip="Transforma em snake_case">
+          <input type="checkbox" id="switchSnake" class="switch-input" />
+          <label for="switchSnake" class="switch-label"></label>
+          <span class="switch-text">🐍 snake_case</span>
+        </div>
 
-  <!-- kebab-case -->
-  <div class="switch-container" data-tooltip="Transforma em kebab-case">
-    <input type="checkbox" id="switchKebab" class="switch-input">
-    <label for="switchKebab" class="switch-label"></label>
-    <span class="switch-text">🍖 kebab-case</span>
-  </div>
-</div>
-</div>
+        <!-- kebab-case -->
+        <div class="switch-container" data-tooltip="Transforma em kebab-case">
+          <input type="checkbox" id="switchKebab" class="switch-input" />
+          <label for="switchKebab" class="switch-label"></label>
+          <span class="switch-text">🍖 kebab-case</span>
+        </div>
 
+      </div>
+    </div>
+
+    <!-- Formato da data -->
     <div style="margin-top:10px;">
-  <label for="formatoData"><strong>Formato da Data:</strong></label>
-  <select id="formatoData">
-    <option value="yyyy-mm-dd" selected>YYYY-MM-DD</option>
-    <option value="yyyy-mm-dd hh:mm:ss">YYYY-MM-DD HH:MM:SS</option>
-    <option value="yyyy-mm-ddthh:mm:ssz">YYYY-MM-DDTHH:MM:SSZ</option>
-    <option value="dd/mm/yyyy">dd/MM/yyyy</option>
-  </select>
-</div>
+      <label for="formatoData"><strong>Formato da Data:</strong></label>
+      <select id="formatoData">
+        <option value="yyyy-mm-dd" selected>YYYY-MM-DD</option>
+        <option value="yyyy-mm-dd hh:mm:ss">YYYY-MM-DD HH:MM:SS</option>
+        <option value="yyyy-mm-ddthh:mm:ssz">YYYY-MM-DDTHH:MM:SSZ</option>
+        <option value="dd/mm/yyyy">dd/MM/yyyy</option>
+      </select>
+    </div>
 
-<!-- Campo adicional: hora manual -->
+    <!-- Campo adicional: hora manual -->
     <div id="horaConfig" style="display:none; margin-top:10px;">
-    <label>
-    <input type="checkbox" id="horaManualToggle"> Definir hora manualmente
-  </label>
-    <div id="horaInputs" style="margin-top:5px;">
-    <input type="number" id="hora" min="0" max="23" placeholder="HH" disabled style="width:60px;">
-    <input type="number" id="minuto" min="0" max="59" placeholder="MM" disabled style="width:60px;">
-    <input type="number" id="segundo" min="0" max="59" placeholder="SS" disabled style="width:60px;">
+      <label>
+        <input type="checkbox" id="horaManualToggle" /> Definir hora manualmente
+      </label>
+
+      <div id="horaInputs" style="margin-top:5px;">
+        <input type="number" id="hora" min="0" max="23" placeholder="HH" disabled style="width:60px;" />
+        <input type="number" id="minuto" min="0" max="59" placeholder="MM" disabled style="width:60px;" />
+        <input type="number" id="segundo" min="0" max="59" placeholder="SS" disabled style="width:60px;" />
+      </div>
     </div>
+
+    <!-- Botões de ação -->
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+      <button id="gerarBtn">Gerar Preview</button>
+      <button id="exportPreviewBtn" disabled>Exportar CSV</button>
+      <button id="filtrarBtn" disabled>Mostrar apenas linhas validadas</button>
+      <button id="filtrarBtnInvalid" disabled>Mostrar apenas linhas inválidas</button>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-  <button id="gerarBtn">Gerar Preview</button>
-  <button id="exportPreviewBtn"disabled>Exportar CSV</button>
-  <button id="filtrarBtn" disabled>Mostrar apenas linhas validadas</button>
-  <button id="filtrarBtnInvalid" disabled>Mostrar apenas linhas inválidas</button>
-</div>
+    <!-- Pré-visualizações -->
+    <div id="previewGerar" style="background:#f7f7f7; padding:10px; white-space:pre;"></div>
+    <div id="previewFiltrado" style="background:#e7ffe7; padding:10px; white-space:pre; margin-top:10px; border:1px solid #ccc; display:none;"></div>
+    <div id="previewInvalid" style="background:#ffe7e7; padding:10px; white-space:pre; margin-top:10px; border:1px solid #ccc; display:none;"></div>
 
-<!-- preview principal -->
-<div id="previewGerar" style="background:#f7f7f7; padding:10px; white-space:pre;"></div>
-
-<!-- linhas válidas -->
-<div id="previewFiltrado" style="background:#e7ffe7; padding:10px; white-space:pre; margin-top:10px; border:1px solid #ccc; display:none;"></div>
-
-<!-- linhas inválidas -->
-<div id="previewInvalid" style="background:#ffe7e7; padding:10px; white-space:pre; margin-top:10px; border:1px solid #ccc; display:none;"></div>
   </section>
 
-  <hr>
+  <hr />
 
- <section style="margin-top: 20px; position: relative;">
-  <h3><strong>3. Pré-visualização Preview Completo:</strong></h3>
+  <!-- 3. Pré-visualização final -->
+  <section style="margin-top:20px; position:relative;">
+    <h3><strong>3. Pré-visualização Preview Completo:</strong></h3>
+    <div id="preview">
+      1- Após inserir o Arquivo, clique no botão Gerar Preview para visualizar o resultado.<br />
+      2- A opção Mostrar apenas linhas validadas e inválidas é exibida apenas quando a pré-visualização foi ativada.<br />
+      3- A exportação é para o Preview Completo.
+    </div>
+  </section>
 
-  <div id="preview">
-    1- Após inserir o Arquivo, clique no botão Gerar Preview para visualizar o resultado.
-    2- A opção Mostrar apenas linhas validadas e inválidas é exibida apenas quando a pré-visualização foi ativada.
-    3- A exportação é para o Preview Completo.
-  </div>
-</section>
-
-   <!-- Scripts -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="script.js"></script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
