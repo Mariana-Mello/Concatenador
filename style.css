@@ -1,8 +1,15 @@
+/* Garante que nada ultrapasse a largura da tela */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Reset básico */
 * {
   box-sizing: border-box;
-  margin: 10;
-  padding: 10;
+  margin: 10px;
+  padding: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -461,6 +468,7 @@ button:hover:not([disabled]) {
     transform: translateX(-50%) translateY(6px);
   }
 }
+
 
 
 
