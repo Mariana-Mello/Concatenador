@@ -528,6 +528,19 @@ button:hover:not([disabled]) {
     transform: translateX(-50%) rotate(180deg); /* seta centralizada */
   }
 }
+/* === Ajuste de exibição dos blocos de resultado no MOBILE === */
+@media (max-width: 600px) {
+  #previewGerar,
+  #previewFiltrado,
+  #previewInvalid {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;   /* permite rolagem horizontal */
+    white-space: pre;   /* mantém o formato original sem quebra */
+    box-sizing: border-box;
+  }
+}
+
 
 
 
