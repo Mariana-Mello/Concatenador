@@ -1,8 +1,8 @@
 /* Reset básico */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 10;
+  padding: 10;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -16,7 +16,7 @@ body {
 /* Container principal */
 .container {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 5 auto;
   background-color: #fff;
   padding: 25px;
   border-radius: 12px;
@@ -438,4 +438,5 @@ button:hover:not([disabled]) {
     border-color: #1f1f1f transparent transparent transparent;
   }
 }
+
 
