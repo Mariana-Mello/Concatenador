@@ -423,7 +423,7 @@ button:hover:not([disabled]) {
   .tooltip-text {
     position: fixed;           /* fixa em relação à viewport */
     left: 50%;                 /* centro horizontal */
-    transform: translateX(-50%);
+    transform: translateX(50%);
     width: 90vw;               /* ocupa a maior parte da tela */
     max-width: 560px;
     top: auto;                 /* controlar pela 'bottom' abaixo */
@@ -452,6 +452,7 @@ button:hover:not([disabled]) {
     /* garante que a versão fixa prevaleça */
   }
 }
+
 
 
 
