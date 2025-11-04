@@ -418,28 +418,35 @@ button:hover:not([disabled]) {
   opacity: 1;
   transform: translateY(-10%) translateX(5px);
 }
-/* === Tooltip centralizado no MOBILE (aplica só até 600px) === */
+/* === Tooltip centralizado abaixo do botão no MOBILE === */
 @media (max-width: 600px) {
   .tooltip-text {
-    position: fixed;           /* fixa em relação à viewport */
-    left: 50%;                 /* centro horizontal */
-    transform: translateX(50%);
-    width: 90vw;               /* ocupa a maior parte da tela */
-    max-width: 560px;
-    top: auto;                 /* controlar pela 'bottom' abaixo */
-    bottom: 12vh;              /* distancia do rodapé; ajuste conforme quiser */
-    z-index: 9999;             /* acima de tudo */
-    text-align: center;
-    padding: 12px;
+    position: absolute;            /* fica relativo ao ícone */
+    left: 50%;                     /* centraliza horizontalmente */
+    top: 120%;                     /* logo abaixo do ícone */
+    transform: translateX(-50%);   /* centraliza de verdade */
+    width: 90vw;                   /* ocupa boa parte da tela */
+    max-width: 320px;              /* limita largura */
+    background-color: #1f1f1f;
+    color: #ddd;
     border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    border: 1px solid #444;
+    padding: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   }
 
-  /* seta centralizada (apontando para cima, perto do topo do balão) */
+  /* seta agora aponta para cima e fica centralizada */
   .tooltip-text::after {
     content: '';
     position: absolute;
-    top: -8px;                 /* desloca a seta para fora do balão */
+    top: -8px;
     left: 50%;
     transform: translateX(-50%) rotate(180deg);
     border-width: 6px;
@@ -447,9 +454,11 @@ button:hover:not([disabled]) {
     border-color: #1f1f1f transparent transparent transparent;
   }
 
-  /* evita que a tooltip padrão posicionada por absolute apareça em outra posição */
-  .tooltip-container .tooltip-text {
-    /* garante que a versão fixa prevaleça */
+  /* Mostra o tooltip ao passar o mouse ou tocar */
+  .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(6px);
   }
 }
 
