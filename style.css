@@ -38,13 +38,29 @@ label {
   margin-top: 15px;
 }
 
-textarea, input[type="text"], select {
+textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 0.95rem;
   background-color: #fafafa;
+  resize: vertical; /* permite redimensionar só na vertical */
+  font-family: inherit;
+}
+
+/* Pré-visualização */
+#preview {
+  background: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 10px;
+  white-space: pre-wrap; /* mantém quebras e espaços */
+  word-wrap: break-word; /* evita texto estourar a borda */
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #333;
 }
 
 /* Botão padrão */
@@ -337,6 +353,7 @@ button:hover:not([disabled]) {
   transform: translateY(-10%) translateX(5px);
 }
 /* === Container do título + tooltip = GUIA = FIM === */
+
 
 
 
