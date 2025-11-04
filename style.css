@@ -420,16 +420,28 @@ button:hover:not([disabled]) {
 }
 /* === Ajuste do tooltip no MOBILE === */
 @media (max-width: 600px) {
-  .tooltip-text {
-    width: 90vw; /* ocupa boa parte da tela */
-    left: 50%;
-    top: 110%;
-    transform: translateX(-50%) translateY(0);
-    border-radius: 10px;
+  .tooltip-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* centraliza o ícone */
   }
 
-  /* seta agora aponta para cima */
+  .tooltip-text {
+    position: absolute;
+    width: 90vw; /* ocupa boa parte da tela */
+    left: 50%;
+    top: 115%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    text-align: center; /* centraliza o texto também */
+    font-size: 14px;
+  }
+
+  /* seta agora aponta para cima, centralizada */
   .tooltip-text::after {
+    content: '';
+    position: absolute;
     top: -6px;
     left: 50%;
     transform: translateX(-50%) rotate(180deg);
@@ -438,5 +450,7 @@ button:hover:not([disabled]) {
     border-color: #1f1f1f transparent transparent transparent;
   }
 }
+
+
 
 
