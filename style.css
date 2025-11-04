@@ -485,8 +485,8 @@ button:hover:not([disabled]) {
   html, body {
     width: 100%;
     overflow-x: hidden;
-    padding: 1px;
-    margin: 1px;
+    padding: 2px;
+    margin: 2px;
   }
 
   .container {
@@ -496,6 +496,7 @@ button:hover:not([disabled]) {
     border-radius: 12px;      /* mantém o mesmo arredondamento */
   }
 }
+
 
 
 
