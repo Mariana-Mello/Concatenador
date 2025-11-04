@@ -418,38 +418,41 @@ button:hover:not([disabled]) {
   opacity: 1;
   transform: translateY(-10%) translateX(5px);
 }
-/* === Ajuste do tooltip no MOBILE === */
+/* === Tooltip centralizado no MOBILE (aplica só até 600px) === */
 @media (max-width: 600px) {
-  .tooltip-container {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center; /* centraliza o ícone */
-  }
-
   .tooltip-text {
-    position: absolute;
-    width: 90vw; /* ocupa boa parte da tela */
-    left: 50%;
-    top: 115%;
+    position: fixed;           /* fixa em relação à viewport */
+    left: 50%;                 /* centro horizontal */
     transform: translateX(-50%);
+    width: 90vw;               /* ocupa a maior parte da tela */
+    max-width: 560px;
+    top: auto;                 /* controlar pela 'bottom' abaixo */
+    bottom: 12vh;              /* distancia do rodapé; ajuste conforme quiser */
+    z-index: 9999;             /* acima de tudo */
+    text-align: center;
+    padding: 12px;
     border-radius: 10px;
-    text-align: center; /* centraliza o texto também */
-    font-size: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
   }
 
-  /* seta agora aponta para cima, centralizada */
+  /* seta centralizada (apontando para cima, perto do topo do balão) */
   .tooltip-text::after {
     content: '';
     position: absolute;
-    top: -6px;
+    top: -8px;                 /* desloca a seta para fora do balão */
     left: 50%;
     transform: translateX(-50%) rotate(180deg);
     border-width: 6px;
     border-style: solid;
     border-color: #1f1f1f transparent transparent transparent;
   }
+
+  /* evita que a tooltip padrão posicionada por absolute apareça em outra posição */
+  .tooltip-container .tooltip-text {
+    /* garante que a versão fixa prevaleça */
+  }
 }
+
 
 
 
