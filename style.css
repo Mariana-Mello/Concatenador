@@ -76,6 +76,24 @@ button {
   transition: background-color 0.2s ease;
   position: relative;
 }
+/* Correção de largura e centralização dos botões */
+button {
+  display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Versão mobile: garante centralização e sem overflow */
+@media (max-width: 600px) {
+  button {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 12px auto 0 auto;
+    padding: 12px;
+    text-align: center;
+  }
+}
 
 button:hover {
   background-color: #005ea1;
@@ -461,6 +479,7 @@ button:hover:not([disabled]) {
     transform: translateX(-50%) translateY(6px);
   }
 }
+
 
 
 
