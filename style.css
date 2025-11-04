@@ -479,6 +479,8 @@ button:hover:not([disabled]) {
     transform: translateX(-50%) translateY(6px);
   }
 }
+/* === MOBILE === */
+
 @media (max-width: 600px) {
   html, body {
     width: 100%;
@@ -488,10 +490,10 @@ button:hover:not([disabled]) {
   }
 
   .container {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 15px 10px; /* <-- aqui adiciona leve espaço lateral */
+    width: calc(100% - 20px); /* cria 10px de margem de cada lado */
+    margin: 0 auto;           /* centraliza */
+    padding: 15px;            /* mantém o padding interno */
+    border-radius: 12px;      /* mantém o mesmo arredondamento */
   }
 }
 
