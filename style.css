@@ -479,6 +479,24 @@ button:hover:not([disabled]) {
     transform: translateX(-50%) translateY(6px);
   }
 }
+/* === Correção final do espaçamento lateral no mobile === */
+@media (max-width: 600px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden; /* impede scroll lateral */
+    padding: 0;         /* remove qualquer padding lateral */
+    margin: 0;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+  }
+}
+
+
 
 
 
