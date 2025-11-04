@@ -494,6 +494,24 @@ button:hover:not([disabled]) {
     border-radius: 12px;
   }
 }
+/* === Tooltip centralizado e seguro no MOBILE === */
+@media (max-width: 600px) {
+  .switch-container::after {
+    left: 50%;                        /* centraliza horizontalmente */
+    transform: translateX(-50%);      /* garante o centro exato */
+    max-width: calc(100vw - 40px);    /* impede de sair da tela */
+    white-space: normal;              /* permite quebra de linha */
+    text-align: center;               /* centraliza o texto */
+    padding: 8px 10px;                /* espaçamento interno */
+    box-sizing: border-box;
+  }
+
+  .switch-container::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 
 
 
