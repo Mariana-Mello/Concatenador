@@ -1,8 +1,8 @@
 /* Reset básico */
 * {
   box-sizing: border-box;
-  margin: 2px;
-  padding: 2px;
+  margin: 0;
+  padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -461,6 +461,7 @@ button:hover:not([disabled]) {
     transform: translateX(-50%) translateY(6px);
   }
 }
+
 
 
 
