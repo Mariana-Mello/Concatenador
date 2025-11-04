@@ -354,6 +354,20 @@ button:hover:not([disabled]) {
 }
 /* === Container do título + tooltip = GUIA = FIM === */
 
+/* === Responsividade: 3 por linha no mobile === */
+@media (max-width: 600px) {
+  .switch-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 10px 8px; /* espaçamento entre linhas e colunas */
+  }
+
+  .switch-item {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
 
 
 
