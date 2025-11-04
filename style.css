@@ -494,34 +494,8 @@ button:hover:not([disabled]) {
     border-radius: 12px;
   }
 }
-/* === Ajuste final dos switches no MOBILE === */
-@media (max-width: 600px) {
-  .switches-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* centraliza horizontalmente */
-    align-items: center;     /* centraliza verticalmente se sobrar espaço */
-    gap: 12px;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
 
-  .switch-container {
-    flex: 1 1 calc(50% - 12px); /* 2 por linha */
-    display: flex;
-    justify-content: center;    /* centraliza o conteúdo dentro */
-    align-items: center;
-    box-sizing: border-box;
-    max-width: 50%;             /* impede de ultrapassar */
-  }
 
-  .switch-container .switch-text {
-    text-align: center;         /* texto alinhado ao centro */
-    display: inline-block;
-  }
-}
 
 
 
