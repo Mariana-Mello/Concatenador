@@ -512,31 +512,33 @@ button:hover:not([disabled]) {
   }
 }
 
-/* === Tooltip do botão (mobile): centralizado abaixo e responsivo) === */
+/* === Tooltip do botão (mobile) — correção final: texto dentro do balão === */
 @media (max-width: 600px) {
-  /* garante que o botão seja referência para o pseudo-elemento */
   button[disabled] {
-    position: relative; /* já deve estar, mas reforça */
-    -webkit-tap-highlight-color: transparent;
+    position: relative; /* referência para pseudo-elementos */
   }
 
-  /* estilo base do balão no mobile (invisível por padrão) */
+  /* Balão (texto) */
   button[disabled]::after {
     content: "⚠️ Gere o preview antes de filtrar.";
     position: absolute;
     left: 50%;
     top: 110%; /* logo abaixo do botão */
-    transform: translateX(-50%);
-    background-color: #333;
-    color: #fff;
+    transform: translateX(-50%) translateY(0);
+    display: block;                /* garante bloco para padding/width funcionar */
+    box-sizing: border-box;
+    width: auto;
+    max-width: calc(100vw - 36px); /* folga nas laterais */
     padding: 8px 10px;
+    white-space: normal;           /* permite quebra de linha */
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    text-align: center;
+    line-height: 1.3;
+    background: #333;
+    color: #fff;
     border-radius: 8px;
     font-size: 0.85rem;
-    white-space: normal;                 /* permite quebra de linha */
-    text-align: center;
-    width: auto;
-    max-width: calc(100vw - 32px);       /* nunca ultrapassa a viewport */
-    box-sizing: border-box;
     z-index: 9999;
     opacity: 0;
     visibility: hidden;
@@ -544,24 +546,24 @@ button:hover:not([disabled]) {
     pointer-events: none;
   }
 
-  /* seta do balão */
+  /* Triângulo (seta) */
   button[disabled]::before {
     content: "";
     position: absolute;
     left: 50%;
-    top: calc(110% - 8px);
+    top: calc(110% - 6px); /* fica encostada na base do botão/balão */
     transform: translateX(-50%) rotate(180deg);
     border-width: 6px;
     border-style: solid;
     border-color: #333 transparent transparent transparent;
+    z-index: 9999;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.18s ease;
     pointer-events: none;
-    z-index: 9999;
   }
 
-  /* mostra o balão quando o usuário interage (hover, active ou focus) */
+  /* mostrar ao interagir (touch/hover/focus) */
   button[disabled]:hover::after,
   button[disabled]:active::after,
   button[disabled]:focus::after,
@@ -570,9 +572,10 @@ button:hover:not([disabled]) {
   button[disabled]:focus::before {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(6px);
+    transform: translateX(-50%) translateY(6px); /* leve subida ao aparecer */
   }
 }
+
 
 
 
